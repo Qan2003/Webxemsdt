@@ -383,105 +383,130 @@ const y_dich = {
 }
 
 // Hàm phân tích số điện thoại
-export function analyzePhoneNumber(phoneNumber: string) {
+export function analyzePhoneNumber(phoneNumber) {
   // Tách số điện thoại thành từng chữ số
-  const digits = phoneNumber.split("").map(Number)
+  const digits = phoneNumber.split("").map((digit) => Number.parseInt(digit, 10))
 
   // Tạo các cặp số
   const pairs = []
   for (let i = 0; i < digits.length; i += 2) {
     if (i + 1 < digits.length) {
-      pairs.push(`${digits[i]}${digits[i + 1]}`)
+      pairs.push("" + digits[i] + digits[i + 1])
     }
   }
 
   // Phân tích từng cặp số
   const results = pairs.map((pair) => {
-    const pairNumber = Number.parseInt(pair)
+    const pairNumber = Number.parseInt(pair, 10)
 
     // Tìm tên quẻ
     let hexagramName = "Không xác định"
     let quality = "Trung bình"
 
     // Kiểm tra số tốt
-    for (const [name, numbers] of Object.entries(so_tot)) {
-      if ((numbers as number[]).includes(pairNumber)) {
-        hexagramName = name
-        quality = "Tốt"
-        break
-      }
-    }
-
-    // Kiểm tra số xấu nếu chưa tìm thấy trong số tốt
-    if (hexagramName === "Không xác định") {
-      for (const [name, numbers] of Object.entries(so_xau)) {
-        if ((numbers as number[]).includes(pairNumber)) {
+    for (const name in so_tot) {
+      if (Object.prototype.hasOwnProperty.call(so_tot, name)) {
+        const numbers = so_tot[name]
+        if (numbers.indexOf(pairNumber) !== -1) {
           hexagramName = name
-          quality = "Xấu"
+          quality = "Tốt"
           break
         }
       }
     }
 
+    // Kiểm tra số xấu nếu chưa tìm thấy trong số tốt
+    if (hexagramName === "Không xác định") {
+      for (const name in so_xau) {
+        if (Object.prototype.hasOwnProperty.call(so_xau, name)) {
+          const numbers = so_xau[name]
+          if (numbers.indexOf(pairNumber) !== -1) {
+            hexagramName = name
+            quality = "Xấu"
+            break
+          }
+        }
+      }
+    }
+
     // Lấy ý nghĩa từ y_dich
-    const meaning = y_dich[hexagramName] ? y_dich[hexagramName][0] : "Không xác định"
-    const symbol = y_dich[hexagramName] ? y_dich[hexagramName][1] : "Không xác định"
-    const detail = y_dich[hexagramName] ? y_dich[hexagramName][2] : "Không xác định"
+    let meaning = "Không xác định"
+    let symbol = "Không xác định"
+    let detail = "Không xác định"
+
+    if (y_dich[hexagramName]) {
+      meaning = y_dich[hexagramName][0] || "Không xác định"
+      symbol = y_dich[hexagramName][1] || "Không xác định"
+      detail = y_dich[hexagramName][2] || "Không xác định"
+    }
 
     return {
-      pair,
+      pair: pair,
       name: hexagramName,
-      meaning,
-      symbol,
-      detail,
-      quality,
+      meaning: meaning,
+      symbol: symbol,
+      detail: detail,
+      quality: quality,
     }
   })
 
   // Tính toán số ở dòng thứ 6 theo công thức
   const sumFirstHalf = digits.slice(0, 5).reduce((sum, digit) => sum + digit, 0)
+
   const sumSecondHalf = digits.slice(5).reduce((sum, digit) => sum + digit, 0)
 
   const calculatedNumber = (sumFirstHalf % 8) * 10 + (sumSecondHalf % 8)
-  const formattedNumber = calculatedNumber.toString().padStart(2, "0")
+  const formattedNumber = calculatedNumber < 10 ? "0" + calculatedNumber : "" + calculatedNumber
 
   // Tìm quẻ tương ứng với số được tính toán
   let hexagramName = "Không xác định"
   let quality = "Trung bình"
 
   // Kiểm tra số tốt
-  for (const [name, numbers] of Object.entries(so_tot)) {
-    if ((numbers as number[]).includes(calculatedNumber)) {
-      hexagramName = name
-      quality = "Tốt"
-      break
-    }
-  }
-
-  // Kiểm tra số xấu nếu chưa tìm thấy trong số tốt
-  if (hexagramName === "Không xác định") {
-    for (const [name, numbers] of Object.entries(so_xau)) {
-      if ((numbers as number[]).includes(calculatedNumber)) {
+  for (const name in so_tot) {
+    if (Object.prototype.hasOwnProperty.call(so_tot, name)) {
+      const numbers = so_tot[name]
+      if (numbers.indexOf(calculatedNumber) !== -1) {
         hexagramName = name
-        quality = "Xấu"
+        quality = "Tốt"
         break
       }
     }
   }
 
+  // Kiểm tra số xấu nếu chưa tìm thấy trong số tốt
+  if (hexagramName === "Không xác định") {
+    for (const name in so_xau) {
+      if (Object.prototype.hasOwnProperty.call(so_xau, name)) {
+        const numbers = so_xau[name]
+        if (numbers.indexOf(calculatedNumber) !== -1) {
+          hexagramName = name
+          quality = "Xấu"
+          break
+        }
+      }
+    }
+  }
+
   // Lấy ý nghĩa từ y_dich
-  const meaning = y_dich[hexagramName] ? y_dich[hexagramName][0] : "Không xác định"
-  const symbol = y_dich[hexagramName] ? y_dich[hexagramName][1] : "Không xác định"
-  const detail = y_dich[hexagramName] ? y_dich[hexagramName][2] : "Không xác định"
+  let meaning = "Không xác định"
+  let symbol = "Không xác định"
+  let detail = "Không xác định"
+
+  if (y_dich[hexagramName]) {
+    meaning = y_dich[hexagramName][0] || "Không xác định"
+    symbol = y_dich[hexagramName][1] || "Không xác định"
+    detail = y_dich[hexagramName][2] || "Không xác định"
+  }
 
   // Thêm kết quả tính toán vào mảng kết quả
   results.push({
     pair: formattedNumber,
     name: hexagramName,
-    meaning,
-    symbol,
-    detail,
-    quality,
+    meaning: meaning,
+    symbol: symbol,
+    detail: detail,
+    quality: quality,
   })
 
   // Tính toán cặp số thứ 7
@@ -500,13 +525,16 @@ export function analyzePhoneNumber(phoneNumber: string) {
   }
 
   // Tạo ánh xạ ngược từ mã quẻ sang tên
-  const maQueAnhXaTen: Record<string, string> = {}
-  for (const [key, value] of Object.entries(que_data)) {
-    maQueAnhXaTen[value.code] = key
+  const maQueAnhXaTen = {}
+  for (const key in que_data) {
+    if (Object.prototype.hasOwnProperty.call(que_data, key)) {
+      maQueAnhXaTen[que_data[key].code] = key
+    }
   }
 
   // Tính tổng các số của sim_number
   const tongSimNumber = digits.reduce((sum, digit) => sum + digit, 0)
+
   const phanDu = tongSimNumber % 6
   const indexToChange = phanDu === 0 ? 6 : phanDu > 6 ? phanDu - 6 : phanDu
 
@@ -515,7 +543,8 @@ export function analyzePhoneNumber(phoneNumber: string) {
 
   // Tạo mã quẻ ban đầu từ cặp số thứ 6
   let newQueCode = ""
-  for (const num of capSo6Str) {
+  for (let i = 0; i < capSo6Str.length; i++) {
+    const num = capSo6Str[i]
     const queName = soAnhXaQue[num]
     if (queName) {
       const queCode = que_data[queName].code
@@ -560,35 +589,43 @@ export function analyzePhoneNumber(phoneNumber: string) {
     if (tenQue1 && tenQue2 && que_data[tenQue1] && que_data[tenQue2]) {
       const num1 = que_data[tenQue1].numbers[0]
       const num2 = que_data[tenQue2].numbers[0]
-      capSo7Str = `${num1}${num2}`
+      capSo7Str = "" + num1 + num2
 
       // Tìm quẻ tương ứng với cặp số thứ 7
-      const pairNumber7 = Number.parseInt(capSo7Str)
+      const pairNumber7 = Number.parseInt(capSo7Str, 10)
 
       // Kiểm tra số tốt
-      for (const [name, numbers] of Object.entries(so_tot)) {
-        if ((numbers as number[]).includes(pairNumber7)) {
-          hexagramName7 = name
-          quality7 = "Tốt"
-          break
-        }
-      }
-
-      // Kiểm tra số xấu nếu chưa tìm thấy trong số tốt
-      if (hexagramName7 === "Không xác định") {
-        for (const [name, numbers] of Object.entries(so_xau)) {
-          if ((numbers as number[]).includes(pairNumber7)) {
+      for (const name in so_tot) {
+        if (Object.prototype.hasOwnProperty.call(so_tot, name)) {
+          const numbers = so_tot[name]
+          if (numbers.indexOf(pairNumber7) !== -1) {
             hexagramName7 = name
-            quality7 = "Xấu"
+            quality7 = "Tốt"
             break
           }
         }
       }
 
+      // Kiểm tra số xấu nếu chưa tìm thấy trong số tốt
+      if (hexagramName7 === "Không xác định") {
+        for (const name in so_xau) {
+          if (Object.prototype.hasOwnProperty.call(so_xau, name)) {
+            const numbers = so_xau[name]
+            if (numbers.indexOf(pairNumber7) !== -1) {
+              hexagramName7 = name
+              quality7 = "Xấu"
+              break
+            }
+          }
+        }
+      }
+
       // Lấy ý nghĩa từ y_dich
-      meaning7 = y_dich[hexagramName7] ? y_dich[hexagramName7][0] : "Không xác định"
-      symbol7 = y_dich[hexagramName7] ? y_dich[hexagramName7][1] : "Không xác định"
-      detail7 = y_dich[hexagramName7] ? y_dich[hexagramName7][2] : "Không xác định"
+      if (y_dich[hexagramName7]) {
+        meaning7 = y_dich[hexagramName7][0] || "Không xác định"
+        symbol7 = y_dich[hexagramName7][1] || "Không xác định"
+        detail7 = y_dich[hexagramName7][2] || "Không xác định"
+      }
     }
   }
 

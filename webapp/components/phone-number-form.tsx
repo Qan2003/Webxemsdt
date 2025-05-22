@@ -1,6 +1,5 @@
 "use client"
 
-import type React from "react"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -8,9 +7,9 @@ import { analyzePhoneNumber } from "@/lib/phone-analyzer"
 
 export function PhoneNumberForm() {
   const [phoneNumber, setPhoneNumber] = useState("")
-  const [results, setResults] = useState<any[]>([])
+  const [results, setResults] = useState([])
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     if (phoneNumber.length === 10) {
       const analysisResults = analyzePhoneNumber(phoneNumber)
@@ -28,7 +27,9 @@ export function PhoneNumberForm() {
           type="text"
           placeholder="Nhập số điện thoại của bạn"
           value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
+          onChange={(e) => {
+            setPhoneNumber(e.target.value)
+          }}
           className="w-full border-blue-300 focus:border-blue-500 focus:ring-blue-500 text-lg"
           pattern="[0-9]{10}"
           maxLength={10}
