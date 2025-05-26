@@ -58,7 +58,7 @@ export function ResultsTable() {
                 </div>
 
                 <div>
-                  <div className="text-xs text-slate-500 uppercase tracking-wide mb-1">Biểu Tượng</div>
+                  <div className="text-xs text-slate-500 uppercase tracking-wide mb-1">Câu Thiệu</div>
                   <div className="text-sm text-slate-600 leading-relaxed">{item.symbol}</div>
                 </div>
 
