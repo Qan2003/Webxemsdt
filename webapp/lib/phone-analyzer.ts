@@ -104,7 +104,7 @@ const y_dich = {
     "Gặp gỡ thình lình, ít khi",
     "Gặp gỡ, cấu kết, liên kết, kết hợp, móc nối, mềm gặp cứng…",
   ],
-  "THIÊN THỦY TỤNG": ["BẤT HÒA", "lớn nhỏ không hòa", "Bàn cãi, kiện tụng, bàn tính, cãi vã, tranh luận, bàn luận…"],
+  "THIÊN THỦY TỤNG": ["BẤT HÒA", "Lớn nhỏ không hòa", "Bàn cãi, kiện tụng, bàn tính, cãi vã, tranh luận, bàn luận…"],
   "THIÊN SƠN ĐỘN": [
     "ẨN TRÁ",
     "Tượng con báo ẩn ở núi nam",
@@ -140,7 +140,7 @@ const y_dich = {
     "Tượng giữ mình đợi thời",
     "Cùng quẫn, bị người làm ách, lo lắng, cùng khổ, mệt mỏi, nguy cấp, lo hiểm nạn…",
   ],
-  "TRẠCH SƠN HÀM": ["THỤ CẢM", "tượng nam nữ có tình ý", "Cảm xúc, thọ nhận, cảm ứng, nghĩ đến, nghe thấy, xúc động…"],
+  "TRẠCH SƠN HÀM": ["THỤ CẢM", "Tượng nam nữ có tình ý", "Cảm xúc, thọ nhận, cảm ứng, nghĩ đến, nghe thấy, xúc động…"],
   "TRẠCH ĐỊA TỤY": [
     "TRƯNG TẬP",
     "Tượng rồng mây giao hội",
@@ -211,7 +211,7 @@ const y_dich = {
     "Trên dưới gian nan, vất vả, buồn thảm",
     "Thiểu lý, thiểu não, hèn mọn, nhỏ nhặt, bẩn thiểu, thiếu cường lực…",
   ],
-  "LÔI ĐỊA DỰ": ["THUẬN ĐỘNG", "tượng trên dưới vui vẻ", "Dự bị, dự phòng, canh chừng, sớm, vui vầy…"],
+  "LÔI ĐỊA DỰ": ["THUẬN ĐỘNG", "Tượng trên dưới vui vẻ", "Dự bị, dự phòng, canh chừng, sớm, vui vầy…"],
   "LÔI THIÊN ĐẠI TRÁNG": [
     "TỰ CƯỜNG",
     "Tượng phượng đậu trên núi",
@@ -222,7 +222,7 @@ const y_dich = {
     "Tượng ma quái làm rối",
     "Tai nạn, rối ren, lôi thôi, nữ chi chung, gái lấy chồng…",
   ],
-  "LÔI HỎA PHONG": ["HÒA MỸ", "tượng cùng đồng tâm hiệp lực", "Thịnh đại, được mùa, nhiều người góp sức…"],
+  "LÔI HỎA PHONG": ["HÒA MỸ", "Tượng cùng đồng tâm hiệp lực", "Thịnh đại, được mùa, nhiều người góp sức…"],
   "THUẦN CHẤN": [
     "ĐỘNG DỤNG",
     "Khắp cùng dấy động",
@@ -268,7 +268,7 @@ const y_dich = {
     "Khí âm dương lên xuống giao hợp",
     "Theo lên theo xuống, theo tới theo lui, có sự dấu diếm ở trong…",
   ],
-  "THỦY SƠN KIỂN": ["TRỞ NGẠI", "không năng đi", "Cản ngăn, chận lại, chậm chạp, què, khó khăn…"],
+  "THỦY SƠN KIỂN": ["TRỞ NGẠI", "Không năng đi", "Cản ngăn, chận lại, chậm chạp, què, khó khăn…"],
   "THỦY ĐỊA TỶ": [
     "CHỌN LỌC",
     "Bỏ nịnh dụng trung",
@@ -359,7 +359,7 @@ const y_dich = {
     "Gai góc đầy đường",
     "Thương tích, bịnh hoạn, buồn lo, đau lòng, ánh sáng bị thương…",
   ],
-  "ĐỊA LÔI PHỤC": ["TÁI HỒI", "tượng ngoài núi lại còn có núi", "Lại có, trở về, bên ngoài, phản phục…"],
+  "ĐỊA LÔI PHỤC": ["TÁI HỒI", "Tượng ngoài núi lại còn có núi", "Lại có, trở về, bên ngoài, phản phục…"],
   "ĐỊA PHONG THĂNG": [
     "TIẾN THỦ",
     "Chòi đạp để ngoi lên trên",
