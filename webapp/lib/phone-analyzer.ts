@@ -217,7 +217,7 @@ const y_dich = {
     "Tượng phượng đậu trên núi",
     "Ý riêng, bụng nghĩ, hướng thượng, ý định, vượng sức, thịnh đại, trên cao, chót vót, lên trên, chí khí, có lập trường…",
   ],
-  "LÔI TRẠCH QUY MUỘI": [
+  "LÔI TRẠCH QUI MUỘI": [
     "XÔN XAO",
     "Tượng ma quái làm rối",
     "Tai nạn, rối ren, lôi thôi, nữ chi chung, gái lấy chồng…",
