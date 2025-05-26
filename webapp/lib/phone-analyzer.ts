@@ -12,13 +12,13 @@ const que_data = {
 
 // Danh sách số tốt
 const so_tot = {
+  "ĐỊA LÔI PHỤC": [4, 84],
   "THIÊN TRẠCH LÝ": [12, 92],
   "TRẠCH ĐỊA TỤY": [20, 28],
   "HỎA ĐỊA TẤN": [30, 38],
   "HỎA THIÊN ĐẠI HỮU": [31, 39],
   "THỦY THIÊN NHU": [61, 69],
   "THIÊN HỎA ĐỒNG NHÂN": [13, 93],
-  "HỎA THIÊN ĐẠI HỮU": [31, 39],
   "PHONG TRẠCH TRUNG PHU": [52],
   "HỎA PHONG ĐỈNH": [35],
   "LÔI THIÊN ĐẠI TRÁNG": [41, 49],
@@ -383,7 +383,7 @@ const y_dich = {
 }
 
 // Hàm phân tích số điện thoại
-export function analyzePhoneNumber(phoneNumber) {
+export function analyzePhoneNumber(phoneNumber: string) {
   // Tách số điện thoại thành từng chữ số
   const digits = phoneNumber.split("").map((digit) => Number.parseInt(digit, 10))
 
@@ -452,7 +452,6 @@ export function analyzePhoneNumber(phoneNumber) {
 
   // Tính toán số ở dòng thứ 6 theo công thức
   const sumFirstHalf = digits.slice(0, 5).reduce((sum, digit) => sum + digit, 0)
-
   const sumSecondHalf = digits.slice(5).reduce((sum, digit) => sum + digit, 0)
 
   const calculatedNumber = (sumFirstHalf % 8) * 10 + (sumSecondHalf % 8)
@@ -525,7 +524,7 @@ export function analyzePhoneNumber(phoneNumber) {
   }
 
   // Tạo ánh xạ ngược từ mã quẻ sang tên
-  const maQueAnhXaTen = {}
+  const maQueAnhXaTen: Record<string, string> = {}
   for (const key in que_data) {
     if (Object.prototype.hasOwnProperty.call(que_data, key)) {
       maQueAnhXaTen[que_data[key].code] = key
@@ -534,7 +533,6 @@ export function analyzePhoneNumber(phoneNumber) {
 
   // Tính tổng các số của sim_number
   const tongSimNumber = digits.reduce((sum, digit) => sum + digit, 0)
-
   const phanDu = tongSimNumber % 6
   const indexToChange = phanDu === 0 ? 6 : phanDu > 6 ? phanDu - 6 : phanDu
 

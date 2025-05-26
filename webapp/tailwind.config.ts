@@ -19,7 +19,9 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["Be Vietnam Pro", "sans-serif"],
+        sans: ["var(--font-sans)", "sans-serif"],
+        serif: ["var(--font-serif)", "serif"],
+        body: ["var(--font-body)", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

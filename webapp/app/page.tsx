@@ -3,25 +3,28 @@ import { ResultsTable } from "@/components/results-table"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 via-emerald-50 to-teal-50">
-      <div className="container mx-auto px-4 py-12 max-w-4xl">
-        <header className="text-center mb-12 bg-white rounded-xl shadow-lg p-8 border-t-4 border-emerald-500">
-          <h1 className="text-3xl md:text-4xl font-bold text-emerald-600 mb-4">
-            Xem Số Điện Thoại Ứng Dụng Theo Dịch Lý Việt Nam
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-gray-50 to-white">
+      <div className="container mx-auto px-3 sm:px-4 py-6 sm:py-12 max-w-5xl">
+        <header className="text-center mb-8 sm:mb-12 bg-white rounded-lg shadow-sm p-4 sm:p-8 border-t border-t-slate-200">
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-serif text-slate-800 mb-3 sm:mb-4 tracking-tight leading-tight">
+            Phân Tích Số Điện Thoại Theo Dịch Lý Việt Nam
           </h1>
-          <div className="text-teal-600 mb-2">
-            <p className="text-lg font-medium">Hướng Dẫn: Thầy Thanh Hải</p>
+          <div className="text-slate-600 mb-2">
+            <p className="text-sm sm:text-base lg:text-lg">Nghiên Cứu & Hướng Dẫn: Thầy Thanh Hải</p>
           </div>
-          <div className="text-teal-600">
-            <p className="text-lg font-medium">Người Viết: Minh Hoàng</p>
+          <div className="text-slate-600">
+            <p className="text-sm sm:text-base lg:text-lg">Người Chia Sẻ: Minh Hoàng</p>
           </div>
         </header>
 
-        <div className="bg-white rounded-lg shadow-lg p-6 mb-8 border-l-4 border-blue-500 max-w-md mx-auto">
+        <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 lg:p-8 mb-6 sm:mb-10 border border-slate-100 max-w-lg mx-auto">
+          <h2 className="text-lg sm:text-xl font-serif text-slate-700 mb-4 sm:mb-6">
+            Nhập Số Điện Thoại Cần Phân Tích
+          </h2>
           <PhoneNumberForm />
         </div>
 
-        <div className="bg-white rounded-lg shadow-lg p-8 border-l-4 border-emerald-500">
+        <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 lg:p-8 border border-slate-100">
           <ResultsTable />
         </div>
       </div>
