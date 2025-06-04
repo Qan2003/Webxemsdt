@@ -12,13 +12,8 @@ const que_data = {
 
 // Danh sách số tốt
 const so_tot = {
-  "ĐỊA LÔI PHỤC": [4, 84],
-  "THIÊN TRẠCH LÝ": [12, 92],
-  "TRẠCH ĐỊA TỤY": [20, 28],
-  "HỎA ĐỊA TẤN": [30, 38],
-  "HỎA THIÊN ĐẠI HỮU": [31, 39],
-  "THỦY THIÊN NHU": [61, 69],
   "THIÊN HỎA ĐỒNG NHÂN": [13, 93],
+  "HỎA THIÊN ĐẠI HỮU": [31, 39],
   "PHONG TRẠCH TRUNG PHU": [52],
   "HỎA PHONG ĐỈNH": [35],
   "LÔI THIÊN ĐẠI TRÁNG": [41, 49],
@@ -35,6 +30,7 @@ const so_tot = {
   "THUẦN CHẤN": [44],
   "TRẠCH SƠN HÀM": [27],
   "SƠN THIÊN ĐẠI SÚC": [71, 79],
+  "HỎA ĐỊA TẤN": [30, 38],
   "THỦY HỎA KÝ TẾ": [63],
   "SƠN LÔI DI": [74],
   "THỦY ĐỊA TỶ": [60, 68],
@@ -42,6 +38,11 @@ const so_tot = {
 
 // Danh sách số xấu
 const so_xau = {
+  "ĐỊA LÔI PHỤC": [4, 84],
+  "THIÊN TRẠCH LÝ": [12, 92],
+  "TRẠCH ĐỊA TỤY": [20, 28],
+  "HỎA ĐỊA TẤN": [30, 38],
+  "THỦY THIÊN NHU": [61, 69],
   "THIÊN ĐỊA BĨ": [10, 18, 90, 98],
   "THIÊN LÔI VÔ VỌNG": [14, 94],
   "THIÊN PHONG CẤU": [15, 95],
