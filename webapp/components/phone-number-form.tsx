@@ -12,8 +12,13 @@ export function PhoneNumberForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (phoneNumber.length === 10) {
-      const analysisResults = analyzePhoneNumber(phoneNumber)
+
+    // Loại bỏ ký tự không phải số
+    const onlyNumbers = phoneNumber.replace(/\D/g, "")
+    setPhoneNumber(onlyNumbers) // cập nhật lại số trên input
+
+    if (onlyNumbers.length === 10) {
+      const analysisResults = analyzePhoneNumber(onlyNumbers)
       setResults(analysisResults)
       // Dispatch an event to notify the results table
       const event = new CustomEvent("phoneAnalyzed", { detail: analysisResults })
@@ -30,11 +35,10 @@ export function PhoneNumberForm() {
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
           className="w-full border-slate-200 focus:border-slate-400 focus:ring-slate-300 text-base sm:text-lg h-12 sm:h-14"
-          pattern="[0-9]{10}"
-          maxLength={10}
+          // pattern="[0-9]{10}" // nên bỏ pattern ở đây, để người dùng dán số linh hoạt hơn
+          maxLength={15}
           minLength={10}
           inputMode="numeric"
-          required
         />
       </div>
       <Button
